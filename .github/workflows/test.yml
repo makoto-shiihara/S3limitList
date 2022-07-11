@@ -22,7 +22,7 @@ jobs:
         with:
           aws-region: ap-northeast-1
           role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          role-session-name: GitHubActions-${{ github.run_id }}
+          role-session-name: S3BucketList-role
           role-duration-seconds: 900 # minimum: 900sec, maximum: iam role session duration
       - name: get-caller-identity is allowed to run on role.
         run: aws sts get-caller-identity
