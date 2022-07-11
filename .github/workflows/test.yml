@@ -13,7 +13,7 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: ${{ secrets.arn:aws:iam::771794531895:role/S3BucketList-role }} # 作成したIAMロールのARN
+          role-to-assume: ${{ secrets.AWS_IAM_ROLE_ARN }} # 作成したIAMロールのARN
           role-session-name: S3limitList # CloudTrailイベントに表示されるユーザー名
           aws-region: ap-northeast-1
 
