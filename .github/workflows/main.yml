@@ -1,21 +1,31 @@
-name: "test_github_s3_list"
+# This is a basic workflow to help you get started with Actions
 
+name: CI
+
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches:
-      - "test-github-s3-list"
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test_github_oidc:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - run: |
-          export AWS_DEFAULT_REGION="ap-northeast-1"
-          ID_TOKEN="$(curl --silent -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}" | jq -r '.value')"
-          ACCESS_KEY_JSON="$(aws sts assume-role-with-web-identity --role-arn "arn:aws:iam::000000000000:role/GitHub_OIDC_test" --role-session-name "${GITHUB_RUN_ID}" --web-identity-token "${ID_TOKEN}" --output json)"
-          export AWS_ACCESS_KEY_ID="$(echo "${ACCESS_KEY_JSON}" | jq -r '.Credentials.AccessKeyId')"
-          export AWS_SECRET_ACCESS_KEY="$(echo "${ACCESS_KEY_JSON}" | jq -r '.Credentials.SecretAccessKey')"
-          export AWS_SESSION_TOKEN="$(echo "${ACCESS_KEY_JSON}" | jq -r '.Credentials.SessionToken')"
-          aws s3 ls
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
