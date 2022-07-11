@@ -16,4 +16,4 @@ jobs:
     steps:
       # ステップ名
       - name: echo a string
-        run: echo "Hello World"
+        run: echo "Hello World aaaaaaaaaaaa"
