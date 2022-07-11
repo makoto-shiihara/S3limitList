@@ -1,9 +1,4 @@
-name: "test_github_oidc"
-uses: aws-actions/configure-aws-credentials@v1
-with:
-  aws-region: ap-northeast-1
-  role-to-assume: arn:aws:iam::771794531895:role/S3BucketList-role
-  role-session-name: MySessionName
+name: "S3limitList"
 
 on:
   push:
@@ -18,5 +13,11 @@ jobs:
     permissions:
       id-token: write
     steps:
+      - name: "test_github_oidc"
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-region: ap-northeast-1
+          role-to-assume: arn:aws:iam::771794531895:role/S3BucketList-role
+          role-session-name: MySessionName
       - run: 
           aws s3 ls
