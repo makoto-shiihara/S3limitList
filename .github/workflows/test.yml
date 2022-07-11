@@ -2,7 +2,7 @@
 name: test
 
 on:
-main branch
+master branch
   #ルールも適当に
   push:
     branches: [ master ]
