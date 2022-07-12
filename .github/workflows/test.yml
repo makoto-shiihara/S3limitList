@@ -20,7 +20,8 @@ jobs:
       - run: aws sts get-caller-identity
 
       - run: |
-        pip install boto3
+        https://github.com/boto/boto3.git
+      # pip install boto3
         pip3 install virtualenv --user
         virtualenv limitchecker
         source limitchecker/bin/activate
