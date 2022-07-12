@@ -27,7 +27,6 @@ jobs:
           virtualenv limitchecker
           source limitchecker/bin/activate
           pip3 install awslimitchecker
-          awslimitchecker -r ap-northeast-1
           echo "1----------------------------------"
           python --version
           awslimitchecker -l 
