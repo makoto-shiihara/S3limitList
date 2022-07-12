@@ -22,12 +22,11 @@ jobs:
           role-session-name: ${{ github.sha }}
       - name: "main shell"
         run: |
-          aws s3 ls
-          # pip3 install boto3
-          # pip3 install virtualenv --user
-          # virtualenv limitchecker
-          # source limitchecker/bin/activate
-          # pip install awslimitchecker
-          # echo "1----------------------------------"
-          # python --version
-          # awslimitchecker -l 
+          pip3 install boto3
+          pip3 install virtualenv --user
+          virtualenv limitchecker
+          source limitchecker/bin/activate
+          pip install awslimitchecker
+          echo "1----------------------------------"
+          python --version
+          awslimitchecker -u 
