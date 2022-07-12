@@ -29,7 +29,7 @@ jobs:
           pip install awslimitchecker
           echo "1----------------------------------"
           python --version
-          awslimitchecker -r ap-northeast-1
+          
           LIMIT_JP=`awslimitchecker -l | grep "S3" | awk '{print $2}'`
           NOW_JP=`awslimitchecker -u | grep "S3" | awk '{print $2}'`
 
