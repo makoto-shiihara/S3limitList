@@ -21,14 +21,14 @@ jobs:
           role-session-name: MySessionName
       - name: "main shell"
         run: |
-          
+          python --version
           pip3 install boto3
           pip3 install virtualenv --user
           virtualenv limitchecker
           source limitchecker/bin/activate
           pip3 install awslimitchecker
           echo "1----------------------------------"
-          
+          awslimitchecker --help
 
           LIMIT_JP=`awslimitchecker -l | grep "S3" | awk '{print $2}'`
           echo "2----------------------------------"        
