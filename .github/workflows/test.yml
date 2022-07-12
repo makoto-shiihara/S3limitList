@@ -20,8 +20,8 @@ jobs:
       - run: aws sts get-caller-identity
 
       - run: |
-        apt-get install python3.10
-        apt install python-pip python3-pip
+        sudo apt-get install python3.10
+        python -m pip install --upgrade pip
         pip install boto3
         pip3 install virtualenv --user
         virtualenv limitchecker
