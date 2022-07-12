@@ -19,7 +19,7 @@ jobs:
           aws-region: ap-northeast-1
           role-to-assume: arn:aws:iam::771794531895:role/S3BucketList-role
           role-session-name: MySessionName
-
+      - name: "main shell"
         run: |
           pip3 install boto3
           pip3 install virtualenv --user
