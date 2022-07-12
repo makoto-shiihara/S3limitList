@@ -4,11 +4,8 @@ on:
   push:
     branches:
       - "master"
-
-
-
 jobs:
-  test_github_oidc:
+  s3limitchecker:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
