@@ -32,17 +32,18 @@ on:
       - "master"
 
 env:
-  AWS_REGION: MY_AWS_REGION                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: MY_ECR_REPOSITORY           # set this to your Amazon ECR repository name
-  ECS_SERVICE: MY_ECS_SERVICE                 # set this to your Amazon ECS service name
-  ECS_CLUSTER: MY_ECS_CLUSTER                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: MY_ECS_TASK_DEFINITION # set this to the path to your Amazon ECS task definition
+  AWS_REGION: ap-northeast-1                  # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: githubactions-httpd           # set this to your Amazon ECR repository name
+  ECS_SERVICE: httpd-service                 # set this to your Amazon ECS service name
+  ECS_CLUSTER: httpd-cluster                 # set this to your Amazon ECS cluster name
+  ECS_TASK_DEFINITION: task-definition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: MY_CONTAINER_NAME           # set this to the name of the container in the
+  CONTAINER_NAME: httpd-container           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
-
+  AWS_ROLE_ARN: arn:aws:iam::771794531895:role/S3BucketList-role
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   deploy:
@@ -54,12 +55,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: "test_github_oidc"
-      uses:  aws-actions/configure-aws-credentials@master
+    - name: Configure AWS credentials from IAM Role
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-region: ap-northeast-1
-        role-to-assume: arn:aws:iam::771794531895:role/S3BucketList-role
-        role-session-name: MySessionName
+        role-to-assume: ${{ env.AWS_ROLE_ARN }}
+        aws-region: ${{ env.AWS_REGION }}
+
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -93,7 +94,7 @@ jobs:
         service: ${{ env.ECS_SERVICE }}
         cluster: ${{ env.ECS_CLUSTER }}
         wait-for-service-stability: true
-    - name: "main run"
+    - name: "Main run"
       run: |
           
           pip3 install boto3
