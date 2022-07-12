@@ -21,7 +21,6 @@ jobs:
           role-session-name: MySessionName
       - name: "main shell"
         run: |
-          sudo apt install python3.7
           pip3 install boto3
           pip3 install virtualenv --user
           virtualenv limitchecker
