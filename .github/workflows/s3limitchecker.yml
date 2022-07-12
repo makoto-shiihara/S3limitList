@@ -1,9 +1,8 @@
 name: "S3limitList"
 
 on:
-  push:
-    branches:
-      - "master"
+  schedule:
+    - cron:  '* 0 * * *'
 jobs:
   s3limitchecker:
     runs-on: ubuntu-latest
