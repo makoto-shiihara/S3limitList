@@ -21,30 +21,12 @@ jobs:
           role-session-name: MySessionName
       - name: "main shell"
         run: |
-          python --version
+          
           pip3 install boto3
           pip3 install virtualenv --user
           virtualenv limitchecker
           source limitchecker/bin/activate
           pip3 install awslimitchecker
           echo "1----------------------------------"
-          awslimitchecker --help
-
-          LIMIT_JP=`awslimitchecker -l | grep "S3" | awk '{print $2}'`
-          echo "2----------------------------------"        
-          NOW_JP=`awslimitchecker -u | grep "S3" | awk '{print $2}'`
-
-          PERSENT=100
           
-          ((AAA_JP= NOW_JP * PERSENT))
-          ((RATE_JP= AAA_JP / LIMIT_JP))
-
-          if [ "$RATE_JP" -gt 60 ]
-          then
-          MESSAGE="現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %"
-
-          DATA="{'channel': '#shiihara makoto', 'username': '警告', 'text': '$MESSAGE', 'icon_emoji': ':cop:'}"
-
-          curl -X POST https://hooks.slack.com/services/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 -d "$DATA"
-
-          fi
+          awslimitchecker -l 
