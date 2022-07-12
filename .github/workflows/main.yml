@@ -28,10 +28,10 @@ jobs:
           source limitchecker/bin/activate
           pip3 install awslimitchecker
           echo "1----------------------------------"
-          awslimitchecker -r ap-northeast-1
-          echo "2----------------------------------"
+          
+
           LIMIT_JP=`awslimitchecker -l | grep "S3" | awk '{print $2}'`
-        
+          echo "2----------------------------------"        
           NOW_JP=`awslimitchecker -u | grep "S3" | awk '{print $2}'`
 
           PERSENT=100
