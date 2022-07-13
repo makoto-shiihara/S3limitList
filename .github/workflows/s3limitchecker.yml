@@ -6,8 +6,9 @@ on:
     # Allows you to run this workflow manually from the Actions tab 
   workflow_dispatch:
 
-    AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:S3BucketList-role/ # GitHub　Actions用に作成したIAMロールのARN                                            
+    AWS_ROLE_ARN: arn:aws:iam::771794531895:role/S3BucketList-role # GitHub　Actions用に作成したIAMロールのARN                                            
 
+    # AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:S3BucketList-role/ # GitHub　Actions用に作成したIAMロールのARN                                            
 
 jobs:
   s3limitchecker:
@@ -17,7 +18,7 @@ jobs:
       contents: read
     steps:
        - name: Configure AWS credentials from IAM Role
-         uses: aws-actions/configure-aws-credentials@v1
+         uses: aws-actions/configure-aws-credentials@master
          with:
            role-to-assume: ${{ env.AWS_ROLE_ARN }}
            aws-region: ${{ env.AWS_REGION }}
