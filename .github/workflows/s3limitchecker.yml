@@ -31,7 +31,7 @@ jobs:
           virtualenv limitchecker
           source limitchecker/bin/activate
           pip install awslimitchecker
-          echo "1----------------------------------"
+          echo "15----------------------------------"
           python --version
           
           LIMIT_JP=`awslimitchecker -l | grep "S3" | awk '{print $2}'`
