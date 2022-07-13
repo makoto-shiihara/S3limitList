@@ -17,7 +17,7 @@ jobs:
          uses: aws-actions/configure-aws-credentials@v1
          with:
            aws-region: ap-northeast-1
-           role-to-assume: arn:aws:iam::${{ env.aws_account_id }}:role/S3BucketList-role
+           role-to-assume: ${{ env.AWS_ROLE_ARN }}
            role-session-name: S3BucketList-role
       #  - name: Configure AWS credentials
       #    uses: aws-actions/configure-aws-credentials@v1
