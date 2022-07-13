@@ -2,7 +2,7 @@ name: "S3limitList"
 
 on:
   schedule:
-    - cron: "10 18 * * *" # 定期実行のコマンド
+    - cron: "10 6 * * *" # 定期実行のコマンド
     # Allows you to run this workflow manually from the Actions tab 
   workflow_dispatch:
 
