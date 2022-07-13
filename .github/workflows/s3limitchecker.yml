@@ -13,17 +13,17 @@ jobs:
       id-token: write
       contents: write
     steps:
-      #  - name: Configure AWS Credentials
-      #    uses: aws-actions/configure-aws-credentials@master
-      #    with:
-      #      aws-region: ap-northeast-1
-      #      role-to-assume: arn:aws:iam::771794531895:role/S3BucketList-role
-       - name: Configure AWS credentials
+       - name: Configure AWS Credentials
          uses: aws-actions/configure-aws-credentials@master
          with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-1
+           aws-region: ap-northeast-1
+           role-to-assume: arn:aws:iam::771794531895:role/awslimitchecker
+      #  - name: Configure AWS credentials
+      #    uses: aws-actions/configure-aws-credentials@master
+      #    with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-northeast-1
        - name: "main shell" 
          run: |
           pip3 install boto3
@@ -41,7 +41,7 @@ jobs:
           ((AAA_JP= NOW_JP * PERSENT))
           ((RATE_JP= AAA_JP / LIMIT_JP))
 
-          if [ "$RATE_JP" -gt 60 ]
+          if [ "$RATE_JP" -gt 0 ]
           then
           MESSAGE="現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %"
 
