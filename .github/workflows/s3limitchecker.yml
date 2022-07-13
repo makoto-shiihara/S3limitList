@@ -2,7 +2,7 @@ name: "S3limitList"
 
 on:
   schedule:
-    - cron:  '15 1 * * *'
+    - cron:  '31 1 * * *'
 jobs:
   s3limitchecker:
     runs-on: ubuntu-latest
