@@ -25,7 +25,7 @@ jobs:
       #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     aws-region: ap-northeast-1
       #  - name: "main shell"
-         run: |
+       - run: |
           pip3 install boto3
           pip3 install virtualenv --user
           virtualenv limitchecker
