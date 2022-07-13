@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
     AWS_ROLE_ARN: arn:aws:iam::771794531895:role/S3BucketList-role # GitHub　Actions用に作成したIAMロールのARN                                            
-    AWS_REGION: ap-northeast-1
+    AWS_REGION: "ap-northeast-1"
     # AWS_ROLE_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:S3BucketList-role/ # GitHub　Actions用に作成したIAMロールのARN                                            
 
 jobs:
