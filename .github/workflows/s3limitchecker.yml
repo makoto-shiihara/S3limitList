@@ -2,7 +2,7 @@ name: "S3limitList"
 
 on:
   schedule:
-    - cron: "35 7 * * *" # 定期実行のコマンド
+    - cron: "0 0 * * *" # 定期実行のコマンド
     # Allows you to run this workflow manually from the Actions tab 
   workflow_dispatch:                                       
 
@@ -24,7 +24,7 @@ jobs:
       #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       #     aws-region: ap-northeast-1
-       - name: "main shell"
+      #  - name: "main shell"
          run: |
           pip3 install boto3
           pip3 install virtualenv --user
