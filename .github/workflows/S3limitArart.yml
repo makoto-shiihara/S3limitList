@@ -50,6 +50,6 @@ jobs:
           #Incoming WebHooks送信
 
           DATA="{'channel': '#shiihara makoto', 'username': '警告', 'text': '$MESSAGE', 'icon_emoji': ':cop:'}"
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data $DATA https://hooks.slack.com/services/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
           
           fi
