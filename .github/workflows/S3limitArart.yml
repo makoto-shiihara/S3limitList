@@ -48,6 +48,6 @@ jobs:
 
           #Incoming WebHooks送信
           DATA="{'username': '警告', 'text': '$MESSAGE', 'icon_emoji': ':cop:'}"
-          curl -X POST --data-urlencode "payload={ \"username\": \"S3limitArart\", \"text\": \"$MESSAGE\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+          curl -X POST --data-urlencode "payload={ \"username\": \"S3limitArart\", \"text\": $MESSAGE, \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
           
           fi
