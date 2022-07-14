@@ -36,8 +36,8 @@ jobs:
           ((RATE_JP= AAA_JP / LIMIT_JP))
 
           echo "現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %"
-          if [ "$RATE_JP" -gt 0 ]
-          then
+          # if [ "$RATE_JP" -gt 0 ]
+          # then
           MESSAGE="現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %"
 
           #Incoming WebHooks送信
@@ -48,4 +48,4 @@ jobs:
           \"text\": \"現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %\", \"icon_emoji\": \":ghost:\"}"　\
            https://hooks.slack.com/services/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
           
-          fi
+          # fi
