@@ -41,8 +41,8 @@ jobs:
           MESSAGE="現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %"
 
           #Incoming WebHooks送信
-          curl -X POST --data-urlencode "payload={ \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #general に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
-          curl -X POST --data-urlencode "payload={ \"username\": \"webhookbot\", \"text\": \"現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+          curl -X POST --data-urlencode "payload={ \"username\": \"webhookbot\", \"text\": \"これは webhookbot という名のボットから #general に投稿されています。\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+          curl -X POST --data-urlencode "payload={ \"username\": \"webhookbot\", \"text\": \"現在のテストアカウントのS3バケットの使用率は、\n 最大 $LIMIT_JP 中 $NOW_JP 個使用中。割合$RATE_JP %\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
 
           
           fi
