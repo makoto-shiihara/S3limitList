@@ -50,5 +50,5 @@ jobs:
           #Incoming WebHooks送信
           DATA="{'username': '警告', 'text': '$MESSAGE', 'icon_emoji': ':cop:'}"
           
-          curl -X POST -H 'Content-type: application/json' --data "$DATA" https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data "$DATA" https://hooks.slack.com/services/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
           fi
